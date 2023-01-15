@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'houses.apps.HousesConfig',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'orders'
 ]
 
 MIDDLEWARE = [
