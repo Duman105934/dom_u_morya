@@ -13,7 +13,7 @@
         <div>{{ house.price }}</div>
         <div>{{ house.description }}</div>
 
-        {% thumbnail house.photo "325x288" corp="center" as im%}
+        {% thumbnail house.photo "325x288" crop="center" as im %}
             <img src="{{ im.url }}" alt="Дом {{ house.name }}">
         {% endthumbnail %}
 
