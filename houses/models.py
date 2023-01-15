@@ -6,3 +6,10 @@ class House(models.Model):
     price = models.IntegerField("цена")
     description = models.TextField("описание")
 
+    class Meta:
+        verbose_name = "дом"
+        verbose_name_plural = "дома"
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
