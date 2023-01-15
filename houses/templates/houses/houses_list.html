@@ -1,23 +1,19 @@
+{% extends "index.html" %}
 {% load thumbnail %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Дом у моря</title>
-</head>
-<body>
-    <h1>Список домов</h1>
-    {% for house in houses %}
-        <div>
-        <h2><a href="{% url 'house' house_id=house.id %}">{{ house.name }}</a></h2>
-        <div>{{ house.price }}</div>
-        <div>{{ house.description }}</div>
 
-        {% thumbnail house.photo "325x288" crop="center" as im %}
-            <img src="{{ im.url }}" alt="Дом {{ house.name }}">
-        {% endthumbnail %}
 
-        </div>
-    {% endfor %}
-</body>
-</html>
+{% block application %}
+<h1>Список домов</h1>
+{% for house in houses %}
+    <div>
+    <h2><a href="{% url 'house' house_id=house.id %}">{{ house.name }}</a></h2>
+    <div>{{ house.price }}</div>
+    <div>{{ house.description }}</div>
+
+    {% thumbnail house.photo "325x288" crop="center" as im %}
+        <img src="{{ im.url }}" alt="Дом {{ house.name }}">
+    {% endthumbnail %}
+
+    </div>
+{% endfor %}
+{% endblock %}
