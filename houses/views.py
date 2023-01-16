@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from houses.models import House
 from orders.forms import OrderForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 def houses_list(request):
@@ -15,5 +17,11 @@ def house_detail(request, house_id):
     if request.method == "POST":
         if form.is_valid():
             form.save()
+            url = reverse("house", kwargs={"house_id": house_id})
+            return HttpResponseRedirect(f"{url}?sent=1")
 
-    return render(request, "houses/house_detail.html", {"house": house, "form": form})
+    return render(request, "houses/house_detail.html", {
+        "house": house,
+        "form": form,
+        "sent": request.GET.get("sent")
+        })
