@@ -4,6 +4,10 @@
 
 {% block application %}
 <h1>Список домов</h1>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Поиск</button>
+    </form>
 {% for house in houses %}
     <div>
     <h2><a href="{% url 'house' house_id=house.id %}">{{ house.name }}</a></h2>
