@@ -19,6 +19,8 @@ def houses_list(request):
             houses = houses.filter(
                 Q(description__icontains=form.cleaned_data["query"]) |
                 Q(name__icontains=form.cleaned_data["query"]))
+        if form.cleaned_data["ordering"]:
+            houses = houses.order_by(form.cleaned_data["ordering"])
     return render(request, "houses/houses_list.html", {"houses": houses, "form": form})
 
 
